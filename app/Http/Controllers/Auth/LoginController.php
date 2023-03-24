@@ -56,7 +56,7 @@ class LoginController extends Controller
             }
             else if(auth()->user()->role =='user')
             {
-                return redirect()->route('Home.user');
+                return redirect()->route('home');
             }
             else
             {
@@ -66,8 +66,8 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect()
-            ->route("login")
+            return redirect('/')
+            
             ->with("error",'Incorrect email or password');
 
         }

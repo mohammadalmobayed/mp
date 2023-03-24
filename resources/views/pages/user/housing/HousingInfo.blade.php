@@ -10,12 +10,9 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row" style="justify-content:space-between">
-
-                            <h2 style=" display: inline" class="card-title">Dorm Hidab</h2>
-                            <a href="{{route('Hidab.create')}}"> <button style="margin-left:980px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
-                            </div>
-                            <div class="table-responsive pt-3">
+                            <h2 style=" display: inline-block" class="card-title">ALL Dorm</h2>
+                            <a href="{{route('info.create')}}"> <button style="margin-left:980px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
+                    <div class="table-responsive pt-3">
                         <table class="table table-dark">
                         <thead>
                         <tr>
@@ -23,27 +20,21 @@
                                 #
                             </th>
                             <th>
-                            Students ID
+                                Total Dorms
                             </th>
                             <th>
-                            Students Name
+                                Total Students
                             </th>
                             <th>
-                                Room No 
+                                Total Rooms
                             </th>
                             <th>
-                                Room Type 
+                                Total Supervisors
                             </th>
                             <th>
-                                Data Joined 
+                                Rooms Occupied
                             </th>
-                            <th>
-                                Phone 
-                            </th>
-                            <th>
-                                Punishment 
-                            </th>
-                            <th>
+                                <th>
                                 Action 
                             </th>
                         </tr>
@@ -55,41 +46,31 @@
                                 {{$stud->id}}
                             </td>
                             <td>
-                                {{$stud->student_id}}
+                                {{$stud->total_dorms}}
                             </td>
                             <td>
-                                {{$stud->name}}
+                                {{$stud->total_students}}
                             </td>
                             <td>
-                                {{$stud->room_number}}
+                                {{$stud->total_rooms}}
                             </td>
                             <td>
-                                {{$stud->room_type}}
+                                {{$stud->total_supervisors}}
                             </td>
                             <td>
-                                {{$stud->date_joined}}
+                                {{$stud->rooms_occupied}}
                             </td>
                             <td>
-                                {{$stud->phone}}
-                            </td>
-                            <td>
-                                {{-- {{$stud->punishment_id}} --}}
-                            </td> 
-                            <td>
-                                <form action="{{route('Hidab.destroy',$stud->id)}}" method="post">
+                                <form action="{{route('info.destroy',$stud->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <div class="p-0  border border-0">
                                         <button type="submit" class="btn btn-danger show-alert-delete-box">Del</button> 
-                                    
-                                </form> 
-                                
-                                <a href="{{route('Hidab.edit',$stud->id)}}" class="btn btn-primary">Edit</a>
-
+                                </form>   
+                                <a href="{{route('info.edit',$stud->id)}}" class="btn btn-primary">Edit</a>
                             </td>
                         </tr>
                         @endforeach
-
                         </tbody>
                     </table>
                     </div>

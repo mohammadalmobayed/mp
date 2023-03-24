@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finance;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class FinanceController extends Controller
@@ -11,8 +12,8 @@ class FinanceController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        
-        return view('pages.finance.finance');
+        $students = Student::all(); 
+        return view('pages.super.finance.finance',compact('students'));
     }
 
 

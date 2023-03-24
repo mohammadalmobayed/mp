@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deanship;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class DeanshipController extends Controller
@@ -11,8 +12,10 @@ class DeanshipController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
+        $students = Student::all();
+
         
-        return view('pages.deanship.deanship');
+        return view('pages.super.deanship.deanship',['students' => $students]);
     }
 
 

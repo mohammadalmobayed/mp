@@ -80,7 +80,12 @@
             <a class="navbar-brand brand-logo" href="#"><img src="assets/image/aut_logo_white.png" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/images/aut_logo_white.png" alt="logo"/></a>
           </div>
-          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome @yield('user')</h4>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome <?php
+            $user= auth()->user();
+            
+            ?>
+            {{$user->name}}
+            </h4>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
               <h4 class="mb-0 font-weight-bold d-none d-xl-block">Jan 22, 2023</h4>

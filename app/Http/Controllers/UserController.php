@@ -47,8 +47,8 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->job_title = $request->job_title;
         $user->User_Image = $user_img;
-        $user->password = Hash::make($request->password); 
-        $user->role = $request->role;
+        $user->password =Hash::make($request->password); 
+         $user->role = $request->role;
         $user->save();
 
         return redirect('users');
@@ -94,7 +94,7 @@ class UserController extends Controller
         $user->job_title = $request->job_title;
         if ($request->hasFile('User_Image')) {
             $user_img = $request->file('User_Image')->getClientOriginalName();
-            $request->file('User_Image')->storeAs('public/userimage',$user_img);
+            $request->file('User_Image')->storeAs('public/image',$user_img);
             $user->User_Image = $user_img;
         }
         $user->save();
@@ -112,6 +112,5 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return back()->with('success','User deleted successfully' );
-        // return redirect('users');
-}
+    }
 }

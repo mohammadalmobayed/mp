@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HousingHidab;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,6 +47,22 @@ class HousingHidabController extends Controller
         // $stud->punishment_id = $request->punishment_id;
         $stud->save();
 
+        $dorm_joined='Hidab';
+
+        $stud = new Student();
+        // $stud->id
+        $stud->student_id = $request->student_id;
+        $stud->name= $request->name;
+        $stud->room_number = $request->room_number ;
+        $stud->room_type = $request->room_type;
+        $stud->date_joined = $request->date_joined;
+        $stud->dorm_joined = $dorm_joined;
+        $stud->phone = $request->phone;
+        // $stud->punishment_id = Hash::make($request->password); 
+        // $stud->punishment_id = $request->punishment_id;
+        $stud->save();
+
+
         return redirect('hidab');
     }
 
@@ -77,7 +94,6 @@ class HousingHidabController extends Controller
     // public function update(Request $request, Student $student)
     public function update(Request $request, $id)
     {
-       
         $stud = HousingHidab::findOrFail($id);
         $stud->student_id = $request->student_id;
         $stud->name = $request->name;
@@ -85,14 +101,6 @@ class HousingHidabController extends Controller
         $stud->room_type = $request->room_type;
         $stud->date_joined = $request->date_joined;
         $stud->phone = $request->phone;
-        // $stud->role = $request->role;
-        // $user->password = Hash::make($request->password);
-        // $user->job_title = $request->job_title;
-        // if ($request->hasFile('User_Image')) {
-        //     $user_img = $request->file('User_Image')->getClientOriginalName();
-        //     $request->file('User_Image')->storeAs('public/userimage',$user_img);
-        //     $user->User_Image = $user_img;
-        // }
         $stud->save();
 
         return redirect('hidab');
@@ -104,23 +112,13 @@ class HousingHidabController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(Student $id)
-    // {
-        
-        // $stud = Student::find($id);
-        // $stud->delete();
-        // return back()->with('success','User deleted successfully' );
-        // // return redirect('users');
-
         public function destroy($id)
 {
     $stud = HousingHidab::where('id', $id)->first();
-    // if($stud && $stud->user_id == Student::user()->id){
-        $stud->delete();
+    $stud1 = Student::where('id', $id)->first();
+            $stud->delete();
+            $stud1->delete();
         return back()->with('success','student  deleted successfully' );
-    // }else{
-        // abort(404);
     }
 }
-    // }
 

@@ -35,9 +35,9 @@ Mohammad
                         <input type="password" class="form-control py-2 mb-3" name="password" value="" placeholder="Enter User Password" required>
                         <label>Status</label>
                         <select name="role" id="role"   class="form-control py-2 mb-3">
-                            <option value="user" disabled>USER TYPE</option>
-                            <option value="user">User</option>
-                            <option value="Admin">admin</option>
+                            <option value="0" disabled>USER TYPE</option>
+                            <option value="0">User</option>
+                            <option value="2">admin</option>
                         </select>
                         <label>User Image</label><br>
                         <input type="file"  class="form-control py-2 mb-3" name="User_Image" required>

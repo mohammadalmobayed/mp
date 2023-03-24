@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DeanshipController;
+use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HousingAController;
 use App\Http\Controllers\HousingBController;
@@ -11,7 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\Deanship;
-use App\Models\Finance;
+// use App\Models\Finance;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -74,9 +75,13 @@ Route::delete('user/{id}/destroy', [UserController::class, 'destroy'])->name('us
 //////
 Route::post('home', [LoginController::class, 'home'])->name('home.index');
 Route::get('housingInfo', [HousingInfoController::class, 'index'])->name('housingInfo.index');
-Route::get('finance', [Finance::class, 'index'])->name('finance.index');
+Route::get('finance', [FinanceController::class, 'index'])->name('finance.index');
 Route::get('deanship', [DeanshipController::class, 'index'])->name('deanship.index');
 Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::post('profile/store', [ProfileController::class, 'store'])->name('profile.store');
+
 /////
 //NewDorms_aRoutes
 Route::get('housingA', [HousingAController::class, 'index'])->name('housingA.index');

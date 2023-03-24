@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->integer('student_id');
                 $table->string('name');
                 $table->integer('phone');
-                $table->string('dorm_joined')->default('housing_hidabs');
+                $table->string('dorm_joined')->default('Hidab');
                 $table->integer('room_number');
                 $table->string('room_type');
                 $table->date('date_joined');
