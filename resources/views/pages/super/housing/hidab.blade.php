@@ -40,9 +40,7 @@
                             <th>
                                 Phone 
                             </th>
-                            <th>
-                                Punishment 
-                            </th>
+                            
                             <th>
                                 Action 
                             </th>

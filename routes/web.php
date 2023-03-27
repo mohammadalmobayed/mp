@@ -111,10 +111,10 @@ Route::delete('hidab/{id}/destroy', [HousingHidabController::class, 'destroy'])-
 //NewDorms_hidab Routes
 Route::get('info', [HousingInfoController::class, 'index'])->name('info.index');
 Route::get('info/create', [HousingInfoController::class, 'create'])->name('info.create');
-Route::post('info/store', [HousingInfoController::class, 'store'])->name('info.store');
 Route::get('info/{id}/edit', [HousingInfoController::class, 'edit'])->name('info.edit');
 Route::put('info/{id}/update', [HousingInfoController::class, 'update'])->name('info.update');
 Route::delete('info/{id}/destroy', [HousingInfoController::class, 'destroy'])->name('info.destroy');
+Route::get('/superAdminHome',[HousingInfoController::class,'show'])->name('Home.superAdmin');
 
 
 

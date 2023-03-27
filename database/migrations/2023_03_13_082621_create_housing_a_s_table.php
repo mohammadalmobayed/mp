@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->integer('room_number');
                 $table->string('room_type');
                 $table->date('date_joined');
+                $table->softDeletes();
                 $table->timestamps();
 
         });
@@ -32,4 +33,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('housing_a_s');
     }
+
 };

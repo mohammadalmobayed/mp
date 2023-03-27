@@ -2,11 +2,6 @@
 
 @section('user')
 
-<?php
-$user= auth()->user();
-
-?>
-{{$user->name}}
 
 @endsection
 
@@ -23,7 +18,8 @@ $user= auth()->user();
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
-      <div class="row">
+      <div class="row">               
+
         <div class="col-12 col-xl-6 grid-margin stretch-card">
           <div class="row w-100 flex-grow">
             <div class="col-md-12 grid-margin stretch-card">
@@ -35,8 +31,8 @@ $user= auth()->user();
                     <div class="col-sm-7">
                         <div class="card-body">
                             <h5 class="card-title">Current tenants</h5>
-                            <p class="card-text">1,543 students</p>
-                            <a href=" " class="btn btn-primary">View more</a>
+                            <p class="card-text">{{$count}} Students</p>
+                            <a href="{{route('info.index')}}" class="btn btn-primary">View more</a>
                         </div>
                     </div>
                 </div>
@@ -49,8 +45,8 @@ $user= auth()->user();
                   <div class="col-sm-7">
                       <div class="card-body">
                           <h5 class="card-title">Total Dorms</h5>
-                          <p class="card-text">5 dorms</p>
-                          <a href=" " class="btn btn-primary">View more</a>
+                          <p class="card-text">{{$stud->total_dorms}} Dorms</p>
+                          <a href="{{route('info.index')}}" class="btn btn-primary">View more</a>
                       </div>
                   </div>
               </div>
@@ -66,8 +62,8 @@ $user= auth()->user();
                 <div class="col-sm-7">
                     <div class="card-body">
                         <h5 class="card-title">Dorms Supervisors</h5>
-                        <p class="card-text">25 supervisors</p>
-                        <a href=" " class="btn btn-primary">View more</a>
+                        <p class="card-text">{{$count1}} Supervisors</p>
+                        <a href="{{route('info.index')}}" class="btn btn-primary">View more</a>
                     </div>
                 </div>
             </div>
@@ -80,8 +76,8 @@ $user= auth()->user();
               <div class="col-sm-7">
                   <div class="card-body">
                       <h5 class="card-title">Occupied rooms</h5>
-                      <p class="card-text">760 rooms in use</p>
-                      <a href=" " class="btn btn-primary">View more</a>
+                      <p class="card-text">{{$stud->rooms_occupied}} Rooms in use</p>
+                      <a href="{{route('info.index')}}" class="btn btn-primary">View more</a>
                   </div>
               </div>
           </div>
@@ -92,5 +88,6 @@ $user= auth()->user();
 </div>
 <!-- main-panel ends -->
 </div>
+
 
     @endsection

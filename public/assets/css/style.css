@@ -11489,6 +11489,9 @@ fieldset:disabled a.btn {
   display: block;
   width: 100%;
 }
+.number{
+  color:red;
+}
 
 .btn-block + .btn-block {
   margin-top: 0.5rem;
