@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
+$GLOBALS['home'] = '';
+
 class RedirectAuthenticatedUser
 {
     /**
@@ -18,18 +20,18 @@ class RedirectAuthenticatedUser
     {
         if (Auth::guard($guard)->check()) {
             if (auth()->user()->role == 'admin') {
-                $home = '/adminHome';
+                $GLOBALS['home'] = '/adminHome';
             } else if (auth()->user()->role == 'editor') {
-                $home = '/editorHome';
+                $GLOBALS['home'] = '/editorHome';
             } else if (auth()->user()->role == 'user') {
-                $home = '/home';
+                $GLOBALS['home'] = '/home';
             } else {
-                $home = '/superAdminHome';
+                $GLOBALS['home'] = '/superAdminHome';
             }
-            return redirect($home);
+            return redirect($GLOBALS['home']);
         }
     
         return $next($request);
     }
-    
 }
+

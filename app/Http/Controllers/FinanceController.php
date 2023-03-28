@@ -36,10 +36,14 @@ class FinanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Finance $finance)
+    public function show($id)
+    
     {
-        //
+        $students = Student::where('id', $id)->first() ;
+
+    return view('pages.super.finance.singleFinance', compact('students'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -88,7 +88,8 @@
             </h4>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
-              <h4 class="mb-0 font-weight-bold d-none d-xl-block">Jan 22, 2023</h4>
+              <h4 class="mb-0 font-weight-bold d-none d-xl-block"><?php use Carbon\Carbon; ?> {{ Carbon::now()->format('F j, Y ') }}</h4>
+              
             </li>
             <li class="nav-item dropdown mr-1">
               <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">

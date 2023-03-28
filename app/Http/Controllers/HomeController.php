@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -36,5 +38,12 @@ class HomeController extends Controller
     public function superAdminHome()
     {
         return view('pages.super.home');
+    }
+
+    public function date(){
+        
+              $current_date= Carbon::now();
+              
+        return view('pages.layouts.master')->with('current_date',$current_date);
     }
 }

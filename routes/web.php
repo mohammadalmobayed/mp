@@ -16,6 +16,9 @@ use App\Models\Deanship;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('landing');
@@ -76,7 +80,12 @@ Route::delete('user/{id}/destroy', [UserController::class, 'destroy'])->name('us
 Route::post('home', [LoginController::class, 'home'])->name('home.index');
 Route::get('housingInfo', [HousingInfoController::class, 'index'])->name('housingInfo.index');
 Route::get('finance', [FinanceController::class, 'index'])->name('finance.index');
+Route::get('finance/{id}', [FinanceController::class, 'show'])->name('finance.show');
 Route::get('deanship', [DeanshipController::class, 'index'])->name('deanship.index');
+
+
+
+///ProfileRoute
 Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');

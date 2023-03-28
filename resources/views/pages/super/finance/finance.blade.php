@@ -17,7 +17,7 @@ Mohammad
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title" style="display: inline;">All Dorms</h2><button  class="fa-solid fa-print" onclick="window.print()"></button>
+                    <h2 class="card-title" style="display: inline;">Students info</h2><button  class="fa-solid fa-print" onclick="window.print()"></button>
                     
                     
                     <div class="table-responsive pt-3">
@@ -48,22 +48,27 @@ Mohammad
                             <th>
                                 Phone No 
                             </th>
-                            
+                            <th>
+                                Action 
+                            </th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($students as $student)
-                            <tr>
-                                <td>{{ $student->id }}</td>
-                                <td>{{ $student->student_id }}</td>
-                                <td>{{ $student->name }}</td>
-                                <td>{{ $student->room_number }}</td>
-                                <td>{{ $student->room_type }}</td>
-                                <td>{{ $student->dorm_joined }}</td>
-                                <td>{{ $student->date_joined }}</td>
-                                <td>{{ $student->phone }}</td>
-                               
+                    </thead>
+                    <tbody>
+                        @foreach ($students as $student)
+                        <tr>
+                            <td>{{ $student->id }}</td>
+                            <td>{{ $student->student_id }}</td>
+                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->room_number }}</td>
+                            <td>{{ $student->room_type }}</td>
+                            <td>{{ $student->dorm_joined }}</td>
+                            <td>{{ $student->date_joined }}</td>
+                            <td>{{ $student->phone }}</td>
+                            <th>
+                            <a href="{{route('finance.show', $student->id)}}" class="btn btn-primary">show</a>
+                            </th>
                             </tr>
+                            
                             @endforeach
                         </tbody>
                     </table>
@@ -78,5 +83,25 @@ Mohammad
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+  <style>
+    @media print{
+        .sidebar{
+            display: none;
+        }
+        .navbar{
+            display: none !important;
+        }
+        .fa-print{
+     display: none;
+        }
+        th:nth-child(9) {
+            display: none;
+        }
+        td:nth-child(9) {
+            display: none;
+        }
+    }
+  </style>
+
 
  @endsection
