@@ -77,7 +77,7 @@
                                 {{-- {{$stud->punishment_id}} --}}
                             </td> 
                             <td>
-                                <form action="{{route('HousingB.destroy',$stud->id)}}" method="post">
+                                <form action="{{route('HousingB.destroy',$stud->student_id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <div class="p-0  border border-0">

@@ -118,10 +118,10 @@ class HousingAController extends Controller
      */
 
 
-        public function destroy($id)
+        public function destroy($student_id)
 {
-    $stud = HousingA::where('id', $id)->first();
-    $stud1 = Student::where('id', $id)->first();
+    $stud = HousingA::where('student_id', $student_id)->first();
+    $stud1 = Student::where('student_id', $student_id)->first();
 
             $stud->delete();
             $stud1->delete();

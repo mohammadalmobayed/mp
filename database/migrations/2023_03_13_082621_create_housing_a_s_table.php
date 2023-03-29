@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->integer('room_number');
                 $table->string('room_type');
                 $table->date('date_joined');
-                $table->softDeletes();
+                // $table->softDeletes();
                 $table->timestamps();
 
         });

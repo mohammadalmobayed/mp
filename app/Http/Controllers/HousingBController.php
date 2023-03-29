@@ -112,10 +112,10 @@ class HousingBController extends Controller
      * Remove the specified resource from storage.
      */
 
-        public function destroy($id)
+        public function destroy($student_id)
 {
-    $stud = HousingB::where('id', $id)->first();
-    $stud1 = Student::where('id', $id)->first();
+    $stud = HousingB::where('student_id', $student_id)->first();
+    $stud1 = Student::where('student_id', $student_id)->first();
 
     // if($stud && $stud->user_id == Student::user()->id){
          $stud->delete();

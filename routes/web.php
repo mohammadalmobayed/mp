@@ -10,6 +10,7 @@ use App\Http\Controllers\HousingHidabController;
 use App\Http\Controllers\HousingInfoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UserController;
 use App\Models\Deanship;
 // use App\Models\Finance;
@@ -34,11 +35,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing');
 });
-
-Route::get('user', function () {
-   return view('pages.users.user');
-});
-
 
 
 Auth::routes();
@@ -76,16 +72,16 @@ Route::put('user/{id}/update', [UserController::class, 'update'])->name('user.up
 Route::delete('user/{id}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 ///////////
 
-//////
-Route::post('home', [LoginController::class, 'home'])->name('home.index');
-Route::get('housingInfo', [HousingInfoController::class, 'index'])->name('housingInfo.index');
-Route::get('finance', [FinanceController::class, 'index'])->name('finance.index');
-Route::get('finance/{id}', [FinanceController::class, 'show'])->name('finance.show');
+//////DeanShip
 Route::get('deanship', [DeanshipController::class, 'index'])->name('deanship.index');
 
 
+/// FinanceRoutes//
+Route::get('finance', [FinanceController::class, 'index'])->name('finance.index');
+Route::get('finance/{id}', [FinanceController::class, 'show'])->name('finance.show');
 
-///ProfileRoute
+
+///ProfileRoute//
 Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -98,7 +94,7 @@ Route::get('housingA/create', [HousingAController::class, 'create'])->name('hous
 Route::post('housingA/store', [HousingAController::class, 'store'])->name('HousingA.store');
 Route::get('housingA/{id}/edit', [HousingAController::class, 'edit'])->name('HousingA.edit');
 Route::put('housingA/{id}/update', [HousingAController::class, 'update'])->name('HousingA.update');
-Route::delete('housingA/{id}/destroy', [HousingAController::class, 'destroy'])->name('HousingA.destroy');
+Route::delete('housingA/{student_id}/destroy', [HousingAController::class, 'destroy'])->name('HousingA.destroy');
 
 //NewDorms_bRoutes
 Route::get('housingB', [HousingBController::class, 'index'])->name('HousingB.index');
@@ -106,7 +102,7 @@ Route::get('housingB/create', [HousingBController::class, 'create'])->name('Hous
 Route::post('housingB/store', [HousingBController::class, 'store'])->name('HousingB.store');
 Route::get('housingB/{id}/edit', [HousingBController::class, 'edit'])->name('HousingB.edit');
 Route::put('housingB/{id}/update', [HousingBController::class, 'update'])->name('HousingB.update');
-Route::delete('housingB/{id}/destroy', [HousingBController::class, 'destroy'])->name('HousingB.destroy');
+Route::delete('housingB/{student_id}/destroy', [HousingBController::class, 'destroy'])->name('HousingB.destroy');
 
 //NewDorms_hidab Routes
 Route::get('hidab', [HousingHidabController::class, 'index'])->name('Hidab.index');
@@ -114,19 +110,14 @@ Route::get('hidab/create', [HousingHidabController::class, 'create'])->name('Hid
 Route::post('hidab/store', [HousingHidabController::class, 'store'])->name('Hidab.store');
 Route::get('hidab/{id}/edit', [HousingHidabController::class, 'edit'])->name('Hidab.edit');
 Route::put('hidab/{id}/update', [HousingHidabController::class, 'update'])->name('Hidab.update');
-Route::delete('hidab/{id}/destroy', [HousingHidabController::class, 'destroy'])->name('Hidab.destroy');
+Route::delete('hidab/{student_id}/destroy', [HousingHidabController::class, 'destroy'])->name('Hidab.destroy');
 
 
-//NewDorms_hidab Routes
-Route::get('info', [HousingInfoController::class, 'index'])->name('info.index');
+//NewDormsInfo Routes
+Route::get('info', [HousingInfoController::class, 'index'])->name('housingInfo.index');
 Route::get('info/create', [HousingInfoController::class, 'create'])->name('info.create');
 Route::get('info/{id}/edit', [HousingInfoController::class, 'edit'])->name('info.edit');
 Route::put('info/{id}/update', [HousingInfoController::class, 'update'])->name('info.update');
-Route::delete('info/{id}/destroy', [HousingInfoController::class, 'destroy'])->name('info.destroy');
+Route::delete('info/{id}/destroy',[HousingInfoController::class, 'destroy'])->name('info.destroy');
 Route::get('/superAdminHome',[HousingInfoController::class,'show'])->name('Home.superAdmin');
 
-
-
-Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
-Route::put('student/{id}/update', [StudentController::class, 'update'])->name('student.update');
-Route::delete('student/{id}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');

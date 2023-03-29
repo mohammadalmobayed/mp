@@ -12995,8 +12995,9 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
   color: #fff;
 }
+
 .card img{
- 
+  
   width: 150px;
 }
 .card {
@@ -13114,6 +13115,7 @@ input[type="button"].btn-block {
   flex-shrink: 0;
   width: 100%;
 }
+ 
 
 .card-img,
 .card-img-top {
@@ -21176,5 +21178,9 @@ brand-logo
     padding-left: 20px;
   }
 }
-
+.img-radius {
+  border-radius: 50% !important;
+  width: 207px !important;
+  height: 240px !important;
+}
 /*# sourceMappingURL=maps/style.css.map */

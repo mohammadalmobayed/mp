@@ -112,10 +112,10 @@ class HousingHidabController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-        public function destroy($id)
+        public function destroy($student_id)
 {
-    $stud = HousingHidab::where('id', $id)->first();
-    $stud1 = Student::where('id', $id)->first();
+    $stud = HousingHidab::where('student_id', $student_id)->first();
+    $stud1 = Student::where('student_id', $student_id)->first();
             $stud->delete();
             $stud1->delete();
         return back()->with('success','student  deleted successfully' );
