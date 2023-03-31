@@ -49,7 +49,7 @@ Mohammad
                                 Data Joined 
                             </th>
                             <th>
-                                Phone No 
+                                Phone 
                             </th>
                         </tr>
                         </thead>

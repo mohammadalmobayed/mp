@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\HousingInfo;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -56,5 +57,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        HousingInfo::create([
+            'total_students'=>0,
+            'total_dorms'=>0,
+            'total_rooms'=>0,
+            'rooms_occupied'=>0,
+            'rooms_vacant'=>0,
+        ]);
+        
     }
 }

@@ -7,9 +7,21 @@
 
       <div class="sidebarContainer">
       <ul class="nav">
-        
+        <?php
+          $role=auth()->user()->role
+        ?>
         <li class="nav-item">
+          @if($role == 'superAdmin')
           <a class="nav-link" href="{{route('Home.superAdmin')}}">
+          @elseif($role == 'admin')
+          <a class="nav-link" href="{{route('Home.admin')}}">
+            @elseif($role == 'editor')
+            <a class="nav-link" href="{{route('Home.editor')}}">
+              @else
+              <a class="nav-link" href="{{route('home')}}">
+                @endif
+
+
             <i class="fa-solid fa-table menu-icon"></i>
             <span class="menu-title">Dashboard</span>
             <div class="badge badge-info badge-pill">2</div>
@@ -40,6 +52,12 @@
           <a class="nav-link" href="{{route('deanship.index')}}">
             <i class="fa-solid fa-user-tie menu-icon"></i>
             <span class="menu-title">Deanship</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('punishment.index')}}">
+            <i class="fa-solid fa-user-tie menu-icon"></i>
+            <span class="menu-title">Punishments</span>
           </a>
         </li>
         <li class="nav-item">
@@ -91,15 +109,7 @@
               <h4 class="mb-0 font-weight-bold d-none d-xl-block"><?php use Carbon\Carbon; ?> {{ Carbon::now()->format('F j, Y ') }}</h4>
               
             </li>
-            <li class="nav-item dropdown mr-1">
-              <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-calendar mx-0"></i>
-                <span class="count bg-info">1</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-              </div>
-            </li>
+            
             <li class="nav-item dropdown mr-2">
               <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                 <i class="mdi mdi-email-open mx-0"></i>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HousingB;
+use App\Models\Punishment;
 use App\Models\Student;
 // use App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class HousingBController extends Controller
     public function index()
     {
         $stud = HousingB::get();
-        return view('pages.super.housing.housingB', compact('stud'));
+        $puns = Punishment::latest()->first();
+        return view('pages.super.housing.housingB', ['stud' => $stud, 'puns' => $puns]);
     }
     
 

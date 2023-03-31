@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HousingA;
+use App\Models\Punishment;
 use App\Models\Student;
 // use App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class HousingAController extends Controller
     public function index()
     {
         $stud = HousingA::get();
-        return view('pages.super.housing.housingA', compact('stud'));
+        $puns = Punishment::latest()->first();
+        return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns]);
     }
     
 
@@ -59,8 +61,6 @@ class HousingAController extends Controller
         $stud->date_joined = $request->date_joined;
         $stud->dorm_joined = $dorm_joined;
         $stud->phone = $request->phone;
-        // $stud->punishment_id = Hash::make($request->password); 
-        // $stud->punishment_id = $request->punishment_id;
         $stud->save();
 
 

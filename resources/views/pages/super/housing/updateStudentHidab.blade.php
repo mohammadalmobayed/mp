@@ -23,28 +23,29 @@ Mohammad
                     <form class="form-group mx-sm-3 mb-2" action="{{ route('Hidab.update', ['id' => $stud->id]) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label>Student Id </label> --}}
+                        <input type="text" class="form-control py-2 mb-3" name="student_id"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " value="{{$stud->student_id}}"  placeholder="Enter student_id" required>
+                        {{-- <label> Name</label> --}}
+                        <input type="text" class="form-control py-2 mb-3"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; "name="name" value="{{$stud->name}}"  placeholder="Enter User Name" required>
+                        </div>
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label>Room Number </label> --}}
+                        <input type="text" class="form-control py-2 mb-3" name="room_number"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " value=" {{$stud->room_number}}"  placeholder="Enter Room Number" required>
+                        {{-- <label>Room Type</label> --}}
+                        <input type="text" class="form-control py-2 mb-3" name="room_type"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " value=" {{$stud->room_type}}" placeholder="Enter User E-mail" required>
+                        </div>
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label>Phone Number</label> --}}
+                        <input type="text" class="form-control py-2 mb-3" name="phone"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " value=" {{$stud->phone}}" placeholder="Enter User Phone Number" required>
+                        {{-- <label>Date Joined</label> --}}
+                        <input type="date" class="form-control py-2 mb-3" name="date_joined"  style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " value="{{$stud->date_joined}}" placeholder="Enter date_joined" required>
+                        </div>
+                       
+                        <div class="row" style="justify-content:center">
 
-                        <label>Student Id </label>
-                        <input type="text" class="form-control py-2 mb-3" name="student_id" value="{{$stud->job_id}}"  placeholder="Enter student_id" required>
-                        <label> Name</label>
-                        <input type="text" class="form-control py-2 mb-3" name="name" value="{{$stud->name}}"  placeholder="Enter User Name" required>
-                        <label>Room Number </label>
-                        <input type="text" class="form-control py-2 mb-3" name="room_number" value=" {{$stud->room_number}}"  placeholder="Enter Room Number" required>
-                        <label>Room Type</label>
-                        <input type="text" class="form-control py-2 mb-3" name="room_type" value=" {{$stud->email}}" placeholder="Enter User E-mail" required>
-                        <label>Phone Number</label>
-                        <input type="text" class="form-control py-2 mb-3" name="phone" value=" {{$stud->phone}}" placeholder="Enter User Phone Number" required>
-                        <label>Date Joined</label>
-                        <input type="date" class="form-control py-2 mb-3" name="date_joined" value="" placeholder="Enter date_joined" required>
-                        {{-- <label>Status</label>
-                        <select name="role" id="role"   class="form-control py-2 mb-3">
-                            <option value="user" disabled>USER TYPE</option>
-                            <option value="user">User</option>
-                            <option value="Admin">admin</option>
-                        </select> --}}
-                        {{-- <label>User Image</label><br>
-                        <input type="file"  class="form-control py-2 mb-3" name="User_Image" required> --}}
-                        <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                            </div>
                     </form>
                             
                         </tr>

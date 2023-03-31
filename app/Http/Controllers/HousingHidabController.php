@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HousingHidab;
+use App\Models\Punishment;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,10 @@ class HousingHidabController extends Controller
     public function index()
     {
         $stud = HousingHidab::get();
-        return view('pages.super.housing.hidab', compact('stud'));
+        $puns = Punishment::first();
+        // dd($puns);
+
+        return view('pages.super.housing.hidab', ['stud' => $stud, 'puns' => $puns]);
     }
     
 

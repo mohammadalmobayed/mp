@@ -9,6 +9,7 @@ use App\Http\Controllers\HousingBController;
 use App\Http\Controllers\HousingHidabController;
 use App\Http\Controllers\HousingInfoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PunishmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UserController;
@@ -120,4 +121,9 @@ Route::get('info/{id}/edit', [HousingInfoController::class, 'edit'])->name('info
 Route::put('info/{id}/update', [HousingInfoController::class, 'update'])->name('info.update');
 Route::delete('info/{id}/destroy',[HousingInfoController::class, 'destroy'])->name('info.destroy');
 Route::get('/superAdminHome',[HousingInfoController::class,'show'])->name('Home.superAdmin');
+
+//PunishmentRouts//
+Route::get('punishment', [PunishmentController::class, 'index'])->name('punishment.index');
+Route::post('punishment',[PunishmentController::class,'store'])->name('punishment.store');
+Route::get('punishment/{id}/single',[PunishmentController::class,'show'])->name('punishment.show');
 
