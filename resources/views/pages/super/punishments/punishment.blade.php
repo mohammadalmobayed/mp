@@ -45,7 +45,7 @@
                             <td>
                                 <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$pun->id}}">
                                     See More
-                                  </button>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -59,7 +59,7 @@
     </div>
     <!-- main-panel ends -->
     @foreach($puns as $pun)
-
+{{-- {{dd($puns)}} --}}
     <div id="ModalLoginForm{{$pun->id}}" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

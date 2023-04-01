@@ -31,17 +31,6 @@ Mohammad
                         <input type="text" class="form-control py-2 mb-3" name="total_supervisors" placeholder="Enter User Total Supervisors" required>
                         <label >Rooms Occupied</label>
                         <input type="text" class="form-control py-2 mb-3" name="rooms_occupied" placeholder="Enter User Phone Number" required>
-                        {{-- <label >Data Joined</label>
-                        <input type="date" class="form-control py-2 mb-3" name="date_joined" placeholder="Enter User Password" required> --}}
-                        {{-- <label>punishment_id</label> --}}
-                        {{-- <select name="role" id="role"   class="form-control py-2 mb-3">
-                            <option value="user" disabled>Punishment TYPE</option>
-                            <option value=""></option>
-                            <option value="First alert">First alert</option>
-                            <option value="Final alert">Final alert</option>
-                        </select> --}}
-                        {{-- <label >User Image</label><br>
-                        <input type="file"  class="form-control py-2 mb-3" name="User_Image" required> --}}
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                             

@@ -6,6 +6,8 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProfileController extends Controller
 {
@@ -44,12 +46,21 @@ class ProfileController extends Controller
     {
         //
     }
+  
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        // Validator::extend('User_Image', function ($attribute, $value, $parameters, $validator) {
+        //     return preg_match('/^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/i', $value);
+        // });
+        
+        // $request->validate([
+        //     'User_Image' => ['required', 'image', 'image_name'],
+        // ]);
+    
         $user_img = $request->file('User_Image')->getClientOriginalName();
         $request->file('User_Image')->storeAs('public/userimage',$user_img);
         var_dump($request->file('upload_file'));

@@ -17,8 +17,9 @@ class HousingAController extends Controller
     public function index()
     {
         $stud = HousingA::get();
-        $puns = Punishment::latest()->first();
-        return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns]);
+        $puns = Punishment::get();
+        $stud_one=[];
+        return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
     }
     
 
@@ -71,9 +72,13 @@ class HousingAController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HousingA $student)
+    public function show( $id)
     {
-        //
+        $stud_one = HousingA::where('id',$id)->get();
+        $stud = HousingA::get();
+        $puns = Punishment::get();
+        return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns ,'stud_one'=>$stud_one]);
+
     }
 
     /**
@@ -86,9 +91,7 @@ class HousingAController extends Controller
         
                     return redirect('housingA');
                 }
-                    
                 return view('pages.super.housing.updateStudent', compact('stud'));
-        
             }
 
     /**
@@ -97,7 +100,6 @@ class HousingAController extends Controller
     // public function update(Request $request, Student $student)
     public function update(Request $request, $id)
     {
-       
         $stud = HousingA::findOrFail($id);
         $stud->student_id = $request->student_id;
         $stud->name = $request->name;
@@ -118,14 +120,19 @@ class HousingAController extends Controller
      */
 
 
-        public function destroy($student_id)
+        public function destroy($student_id ,$selected_id)
 {
     $stud = HousingA::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
+    $stud2= Punishment::where('student_id',$student_id)->all();
+
+
+
 
             $stud->delete();
             $stud1->delete();
-        return back()->with('success','student  deleted successfully' );
+            $stud2->delete();
+        return redirect()->back();
     }
 }
 

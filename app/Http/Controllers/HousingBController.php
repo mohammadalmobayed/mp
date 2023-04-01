@@ -118,10 +118,13 @@ class HousingBController extends Controller
 {
     $stud = HousingB::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
+    $stud2= Punishment::where('student_id',$student_id)->first();
+
 
     // if($stud && $stud->user_id == Student::user()->id){
          $stud->delete();
-         $stud1->delete();       
+         $stud1->delete();  
+         $stud2->delete();     
         return back()->with('success','student  deleted successfully' );
     // }else{
         // abort(404);

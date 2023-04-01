@@ -2,7 +2,6 @@
 @include('pages.layouts.head')
 
 <div class="container-scroller d-flex">
-    <!-- partial:./partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
 
       <div class="sidebarContainer">
@@ -20,7 +19,6 @@
               @else
               <a class="nav-link" href="{{route('home')}}">
                 @endif
-
 
             <i class="fa-solid fa-table menu-icon"></i>
             <span class="menu-title">Dashboard</span>
@@ -87,16 +85,15 @@
     </div>
     </nav>
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:./partials/_navbar.html -->
+    <div class="container-fluid page-body-wrapper" style="padding: 0">
       <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="#"><img src="../../../assets/image/aut_logo_white.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/images/aut_logo_white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href=""><img src="../../../assets/image/aut_logo_white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href=""><img src="assets/images/aut_logo_white.png" alt="logo"/></a>
           </div>
           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome <?php
             $user= auth()->user();
@@ -117,7 +114,6 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                 <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-               
         </div>
       </nav>
 @yield('content')

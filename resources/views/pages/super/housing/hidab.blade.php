@@ -73,10 +73,10 @@
                                 {{$stud->phone}}
                             </td>
                             <td>
-                                @if ($puns)
+                                @if ($puns && $puns->student_id == $stud->student_id)
                                     {{$puns->warning_type}} 
                                 @endif
-                            </td> 
+                            </td>
                             <td style="padding-right:0">
                                 <form action="{{route('Hidab.destroy',$stud->student_id)}}" method="post">
                                     @csrf
@@ -103,7 +103,8 @@
             
     </div>
     <!-- main-panel ends -->
-    <div id="ModalLoginForm" class="modal fade">
+    @if($stud->count() > 0)
+        <div id="ModalLoginForm" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,13 +116,11 @@
                         <div class="input-group" style="gap:10px">
                             
                                 <input  type="text" placeholder="Student Name" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="name" value= {{$stud->name}}  readonly>
-                          
-                           
+
                                 <input type="text" placeholder="Student ID" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="student_id" value =   {{$stud->student_id}} readonly>
                             
                         </div>
-                        <div class="form-group">
-                           
+                        <div class="form-group"> 
                                 <select class="form-control input-lg" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray;" aria-label="Default select example" name="warning_type" required>
                                     <option selected>Warning type</option>
                                     @if($puns->warning_type == 'first_warning')
@@ -146,5 +145,6 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    @endif
 
 @endsection

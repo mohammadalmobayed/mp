@@ -17,9 +17,11 @@ Mohammad
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row" style="justify-content:space-between">
                             <h2  style="display: inline-block" class="card-title">System users</h2>
-                            <a href="{{route('user.create')}}"> <button style="margin-left:900px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
-                    <div class="table-responsive pt-3">
+                            <a href="{{route('user.create')}}"> <button style="margin-right:15px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
+                            </div>
+                            <div class="table-responsive pt-3">
                         <table class="table table-dark">
                             <thead>
                                 <tr>

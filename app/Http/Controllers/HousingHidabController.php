@@ -18,7 +18,8 @@ class HousingHidabController extends Controller
         $stud = HousingHidab::get();
         $puns = Punishment::first();
         // dd($puns);
-
+       
+         
         return view('pages.super.housing.hidab', ['stud' => $stud, 'puns' => $puns]);
     }
     
@@ -120,8 +121,11 @@ class HousingHidabController extends Controller
 {
     $stud = HousingHidab::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
+    $stud2= Punishment::where('student_id',$student_id)->first();
+
             $stud->delete();
             $stud1->delete();
+            $stud2->delete();
         return back()->with('success','student  deleted successfully' );
     }
 }

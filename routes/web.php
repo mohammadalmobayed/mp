@@ -95,6 +95,7 @@ Route::get('housingA/create', [HousingAController::class, 'create'])->name('hous
 Route::post('housingA/store', [HousingAController::class, 'store'])->name('HousingA.store');
 Route::get('housingA/{id}/edit', [HousingAController::class, 'edit'])->name('HousingA.edit');
 Route::put('housingA/{id}/update', [HousingAController::class, 'update'])->name('HousingA.update');
+Route::get('housingA/{id}', [HousingAController::class, 'show'])->name('HousingA.show');
 Route::delete('housingA/{student_id}/destroy', [HousingAController::class, 'destroy'])->name('HousingA.destroy');
 
 //NewDorms_bRoutes

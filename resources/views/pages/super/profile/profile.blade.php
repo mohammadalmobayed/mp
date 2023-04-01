@@ -61,7 +61,7 @@ mohammad
                                     </div>
                                 </div>
                                 <div class="row" style="justify-content: center; margin-top: 40px">
-                                    <a class="btn btn-primary" href="{{route('profile.edit')}}">Edit profile</a>
+                                    <a class="btn btn-primary btn-sm" href="{{route('profile.edit')}}">Edit profile</a>
                                     </div>
                                 </div>
                                

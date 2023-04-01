@@ -16,24 +16,34 @@ Mohammad
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
+                    <div class="row" style="justify-content:center; margin-bottom:20px;">
                     <h2 class="card-title">Edit Profile</h2>
+                    </div>
                     {{-- method="POST" --}}
                     <form class="form-group mx-sm-3 mb-2" action="{{ route('profile.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        <label> Name</label>
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label> Name</label> --}}
                         <input type="text" class="form-control py-2 mb-3" name="name" value="{{ auth()->user()->name}}"   required>
-                        <label> Job Title</label>
+                        {{-- <label> Job Title<//label> --}}
                         <input type="text" class="form-control py-2 mb-3" name="job_title" value="{{auth()->user()->job_title}}"  required>
-                        <label>Email </label>
-                        <input type="text" class="form-control py-2 mb-3" name="email" value="{{auth()->user()->email}}"   required>
-                        <label>Phone Number</label>
+                        </div>
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label>Phone Number</label> --}}
                         <input type="text" class="form-control py-2 mb-3" name="phone" value="{{auth()->user()->phone}}"  required>
-                        <label>Password</label>
+                        {{-- <label>Email </label> --}}
+                        <input type="email" class="form-control py-2 mb-3" name="email" value="{{auth()->user()->email}}"   required>
+                        </div>
+                        <div class="input-group" style="gap:10px">
+                        {{-- <label>Password</label> --}}
                         <input type="text" class="form-control py-2 mb-3" name="password" value="{{auth()->user()->password}}"  required >
-                        <label>User Image</label><br>
+                        {{-- <label>User Image</label><br> --}}
                         <input type="file"  class="form-control py-2 mb-3" name="User_Image" required>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                        <div class="row" style="justify-content:center">
+                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                        </div>
                     </form>
                         </tr>
                         </tbody>

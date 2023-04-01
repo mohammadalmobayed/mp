@@ -109,6 +109,7 @@
             
     </div>
     <!-- main-panel ends -->
+    @if($stud->count() > 0)
     <div id="ModalLoginForm" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -152,4 +153,5 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    @endif
     @endsection

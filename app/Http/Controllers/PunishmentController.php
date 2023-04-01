@@ -93,6 +93,6 @@ class PunishmentController extends Controller
      */
     public function destroy(Punishment $punishment)
     {
-        //
+      
     }
 }
