@@ -15,12 +15,18 @@ class HousingHidabController extends Controller
      */
     public function index()
     {
+
         $stud = HousingHidab::get();
-        $puns = Punishment::first();
+        $puns = Punishment::whereIn('student_id', $stud->pluck('student_id'))->latest()->get()->groupBy('student_id');
+
+
+        $stud_one=[];
+        return view('pages.super.housing.hidab', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
+        // $stud = HousingHidab::get();
+        // $puns = Punishment::first();
         // dd($puns);
        
          
-        return view('pages.super.housing.hidab', ['stud' => $stud, 'puns' => $puns]);
     }
     
 
@@ -74,9 +80,12 @@ class HousingHidabController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HousingHidab $student)
+    public function show( $id)
     {
-        //
+        $stud_one = HousingHidab::where('id',$id)->get();
+        $stud = HousingHidab::get();
+        $puns = Punishment::get();
+        return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns ,'stud_one'=>$stud_one]);
     }
 
     /**

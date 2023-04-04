@@ -65,8 +65,13 @@ Mohammad
                             <td>{{ $student->date_joined }}</td>
                             <td>{{ $student->phone }}</td>
                             <th>
-                            <a href="{{route('finance.show', $student->id)}}" class="btn btn-primary">show</a>
-                            </th>
+                            {{-- <a href="{{route('finance.show', $student->id)}}"  class="fa-solid fa-eye fa-xl" style="color: #4bb6ec;"></i>>show</a> --}}
+                            <form action="{{ route('finance.show', $student->id) }}" method="GET">
+                                <button  type="submit"  style="border:none; background:none;" class="btn btn-primary">
+                                    <i class="fa-solid fa-eye fa-xl" style="color: #4bb6ec;"></i></button>
+                            </form>
+                            
+                        </th>
                             </tr>
                             
                             @endforeach

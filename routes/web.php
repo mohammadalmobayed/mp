@@ -127,4 +127,5 @@ Route::get('/superAdminHome',[HousingInfoController::class,'show'])->name('Home.
 Route::get('punishment', [PunishmentController::class, 'index'])->name('punishment.index');
 Route::post('punishment',[PunishmentController::class,'store'])->name('punishment.store');
 Route::get('punishment/{id}/single',[PunishmentController::class,'show'])->name('punishment.show');
+Route::put('punishment/{id}/edit',[PunishmentController::class,'edit'])->name('punishment.edit');
 

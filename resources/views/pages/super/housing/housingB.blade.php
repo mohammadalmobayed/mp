@@ -11,9 +11,8 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="row" style="justify-content:space-between">
-
-                    <h2 style=" display: inline; margin-left:15px" class="card-title">Dorm B</h2>
-                    <a href="{{route('HousingB.create')}}"> <button  style="margin-right:15px" class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
+                    <h2 style=" display: inline" class="card-title">Dorm B</h2>
+                    <a href="{{route('HousingB.create')}}"> <button style="margin-right:15px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
                     </div>
                     <div class="table-responsive pt-3">
                         <table class="table table-dark" style=" text-align: center;">
@@ -49,53 +48,77 @@
                         </tr>
                         </thead>
                         <tbody>
-                                @foreach ($stud as $stud)
+                                @foreach ($stud as $studone)
 
                         <tr>
                             <td>
-                                {{$stud->id}}
+                                {{$studone->id}}
                             </td>
                             <td>
-                                {{$stud->student_id}}
+                                {{$studone->student_id}}
                             </td>
                             <td>
-                                {{$stud->name}}
+                                {{$studone->name}}
                             </td>
                             <td>
-                                {{$stud->room_number}}
+                                {{$studone->room_number}}
                             </td>
                             <td>
-                                {{$stud->room_type}}
+                                {{$studone->room_type}}
                             </td>
                             <td>
-                                {{$stud->date_joined}}
+                                {{$studone->date_joined}}
                             </td>
                             <td>
-                                {{$stud->phone}}
+                                {{$studone->phone}}
                             </td>
-
-                              <td>
-                                @if ($puns)
-                                   {{$puns->warning_type}} 
-                                @endif
-                            </td> 
+                            <td>
+                                @if (isset($puns[$studone->student_id]))
+                                @foreach ($puns[$studone->student_id] as $pun)
+                                    @if ($pun->status === 'accepted')
+                                        {{ $pun->warning_type }}
+                                        @break
+                                    @endif
+                                @endforeach
+                            @endif
+                                {{-- @if (isset($puns[$studone->student_id]))
+                                {{ $puns[$studone->student_id]->first()->warning_type }}
+                                @endif --}}
+                                {{-- @foreach ($puns->where('student_id', $studone->student_id) as $pun)
+                                    {{ $pun->warning_type }}
+                                @endforeach --}}
+                            </td>
                             <td style="padding:0">
-                                <form action="{{route('HousingB.destroy',$stud->student_id)}}" method="post">
+                                <form action="{{route('HousingB.destroy',$studone->student_id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <div class="p-0  border-0">
-                                      <button  type="submit" style="border:none; background:none;">  <i class="fa-solid fa-trash fa-xl" style="color: #d71414;"> </i> </button>
+                                        <button  type="submit" style="border:none; background:none;">  <i class="fa-solid fa-trash fa-xl" style="color: #d71414;"> </i> </button>
                                     
                                 </form> 
                                 
-                                  <a href="{{route('HousingB.edit',$stud->id)}}"><i class="fa-solid fa-pen fa-xl" style="color: #346BCB;"></i></a>
-                                  @if($puns->warning_type == 'final_warning')
-                                  <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
-                                      
-                                  @else
-                                  <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                    <a href="{{route('HousingB.edit',$studone->id)}}"><i class="fa-solid fa-pen fa-xl" style="color: #346BCB;"></i></a>
+                                
+                                    @if (isset($puns[$studone->student_id]))
+                                    @foreach ($puns[$studone->student_id] as $pun)
+                                        @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
+                                    <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
+                                    @break
 
-                                 @endif
+                                @else
+                                    <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                    @endif
+                                    
+                                    @endforeach
+
+                                    
+
+                                {{-- @endif 
+                                @if(!isset($puns[$studone->student_id]))
+                                <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                @endif --}}
+                                
+
                             </td>
                         </tr>
                         @endforeach
@@ -109,8 +132,10 @@
             
     </div>
     <!-- main-panel ends -->
-    @if($stud->count() > 0)
-    <div id="ModalLoginForm" class="modal fade">
+    {{-- {{dd($stud_one)}} --}}
+    @foreach($stud as $studone)
+    {{-- {{dd($stud)}} --}}
+    <div id="ModalLoginForm{{$studone->id}}" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -120,22 +145,21 @@
                     <form role="form" method="POST" action="{{route('punishment.store')}}">
                         @csrf
                         <div class="input-group" style="gap:10px">
-                            
-                                <input  type="text" placeholder="Student Name" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="name" value= {{$stud->name}}  readonly>
+                                <input  type="text" placeholder="Student Name" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="name" value= {{$studone->name}}  readonly>
                           
                            
-                                <input type="text" placeholder="Student ID" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="student_id" value =   {{$stud->student_id}} readonly>
+                                <input type="text" placeholder="Student ID" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="student_id" value =   {{$studone->student_id}} readonly>
                             
                         </div>
                         <div class="form-group">
                            
                                 <select class="form-control input-lg" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray;" aria-label="Default select example" name="warning_type" required>
                                     <option selected>Warning type</option>
-                                    @if($puns->warning_type == 'first_warning')
-                                    <option value="first_warning" style="display:none">First Warning</option>
-                                    @else
+                                    {{-- @if($puns && $puns->warning_type == 'first_warning') --}}
+                                    {{-- <option value="first_warning" style="display:none">First Warning</option> --}}
+                                    {{-- @else --}}
                                     <option value="first_warning" >First Warning</option>
-                                    @endif
+                                    {{-- @endif --}}
 
                                     <option value="final_warning">Final Warning</option>
                                   </select>
@@ -153,5 +177,6 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    @endif
-    @endsection
+@endforeach
+
+@endsection

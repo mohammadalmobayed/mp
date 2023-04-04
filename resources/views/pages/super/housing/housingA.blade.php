@@ -73,10 +73,21 @@
                                 {{$studone->phone}}
                             </td>
                             <td>
-                                {{-- @if ($puns)
-                                    {{$puns->warning_type}} 
+                                @if (isset($puns[$studone->student_id]))
+                                @foreach ($puns[$studone->student_id] as $pun)
+                                    @if ($pun->status === 'accepted')
+                                        {{ $pun->warning_type }}
+                                        @break
+                                    @endif
+                                @endforeach
+                            @endif
+                                {{-- @if (isset($puns[$studone->student_id]))
+                                {{ $puns[$studone->student_id]->first()->warning_type }}
                                 @endif --}}
-                            </td> 
+                                {{-- @foreach ($puns->where('student_id', $studone->student_id) as $pun)
+                                    {{ $pun->warning_type }}
+                                @endforeach --}}
+                            </td>
                             <td style="padding:0">
                                 <form action="{{route('HousingA.destroy',$studone->student_id)}}" method="post">
                                     @csrf
@@ -87,15 +98,46 @@
                                 </form> 
                                 
                                     <a href="{{route('HousingA.edit',$studone->id)}}"><i class="fa-solid fa-pen fa-xl" style="color: #346BCB;"></i></a>
-                                {{-- @if($puns && $puns->warning_type == 'final_warning') --}}
-                                    {{-- <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button> --}}
+                                
+                                    @php
+                                    $has_final_warning = false;
+                                    @endphp
+                                    
+                                    @if (isset($puns[$studone->student_id]))
+                                        @foreach ($puns[$studone->student_id] as $pun)
+                                            @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
+                                                @php
+                                                $has_final_warning = true;
+                                                @endphp
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    
+                                    @if ($has_final_warning)
+                                        <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
+                                    @else
+                                        <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                    @endif
+                                    
+                                    {{-- @if (isset($puns[$studone->student_id]))
+                                    @foreach ($puns[$studone->student_id] as $pun)
+                                        @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
+                                    <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
+                                    @break
 
-                                {{-- @else --}}
+                                @else
                                     <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
-                                    {{-- <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$stud->id}}">
-                                        See More
-                                    </button> --}}
-                                {{-- @endif --}}
+                                    @endif
+                                    
+                                    @endforeach
+
+                                @endif 
+                                @if(!isset($puns[$studone->student_id]))
+                                <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                @endif --}}
+                                
+
                             </td>
                         </tr>
                         @endforeach

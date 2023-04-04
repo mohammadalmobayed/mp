@@ -14,10 +14,15 @@ class HousingAController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Punishment $student_id)
     {
         $stud = HousingA::get();
-        $puns = Punishment::get();
+        $puns = Punishment::whereIn('student_id', $stud->pluck('student_id'))->latest()->get()->groupBy('student_id');
+
+        // $puns = Punishment::get();
+        // $puns = Punishment::whereIn('student_id', $stud->pluck('student_id'))->latest()->get();
+        // $pun_one = Punishment::where('student_id',$student_id)->latest()->first();
+
         $stud_one=[];
         return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
     }
@@ -120,18 +125,26 @@ class HousingAController extends Controller
      */
 
 
-        public function destroy($student_id ,$selected_id)
+        public function destroy($student_id)
 {
     $stud = HousingA::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
-    $stud2= Punishment::where('student_id',$student_id)->all();
+    $stud2= Punishment::where('student_id',$student_id)->first();
 
 
 
+    if ($stud) {
+        $stud->delete();
+    }
 
-            $stud->delete();
-            $stud1->delete();
-            $stud2->delete();
+    if ($stud1) {
+        $stud1->delete();
+    }
+
+    if ($stud2) {
+        $stud2->delete();
+    }
+
         return redirect()->back();
     }
 }

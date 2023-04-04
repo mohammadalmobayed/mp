@@ -75,10 +75,35 @@ class PunishmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Punishment $punishment)
-    {
-        //
+    public function edit(Request $request, $id)
+{
+    $punishment = Punishment::findOrFail($id);
+    if ($request->input('status') === 'accepted') {
+        $punishment->status = 'accepted';
+    } else if ($request->input('status') === 'rejected') {
+        $punishment->status = 'rejected';
     }
+    
+    $punishment->save();
+    return redirect()->back();
+
+    
+    // return redirect()->route('punishment.show', ['id' => $punishment->id]);
+    // if ($request->has('status')) {
+    //     $punishment->status = $request->input('status');
+    //     $punishment->save();
+    // }
+}
+
+    // public function edit(Request $request, $id)
+    // {
+    //     $punishment = Punishment::findOrFail($id);
+    //     if ($request->has('status')) {
+    //         $punishment->status = $request->input('status');
+    //         $punishment->save();
+    //     }
+    //     return redirect()->back();
+    // }
 
     /**
      * Update the specified resource in storage.

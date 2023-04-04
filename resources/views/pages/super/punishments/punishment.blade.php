@@ -32,6 +32,7 @@
                         </thead>
                         <tbody>
                             @foreach($puns as $pun)
+                            @if($pun->status !== 'accepted')
                         <tr>
                             <td>
                                 {{$pun->name}}
@@ -44,10 +45,10 @@
                             </td>
                             <td>
                                 <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$pun->id}}">
-                                    See More
-                                </button>
+                                    <i class="fa-solid fa-eye fa-xl" style="color: #4bb6ec;"></i>                                </button>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                         </tbody>
                     </table>
@@ -67,7 +68,8 @@
                     <h1 class="modal-title">Add Punishment</h1>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="POST" action="">
+                    <form role="form" method="POST" action="{{route('punishment.edit',['id'=> $pun->id])}}">
+                        @method('PUT')
                         @csrf
                         <div class="input-group">
                             
@@ -85,11 +87,26 @@
                                 <input placeholder="Warning reason ..." class="form-control input-lg" style="height:6rem !important; border: 2px solid gray; " name="warning_reason" value= {{$pun->warning_reason}}  readonly >
                             </div>
                         </div>
-                        <button class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="status" value="accepted">Approve</button>
+                        <button type="submit" class="btn btn-primary" name="status" value="rejected">Reject</button>
+
+                        {{-- <input type="hidden" name="status" id="status" value="">
+                        <button type="submit" class="btn btn-primary" onclick="setStatus('accepted')">Approve</button>
+                        <button type="submit" class="btn btn-primary"  onclick="setStatus('rejected')">Reject</button> --}}
+                    
                     </form>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
    @endforeach
+
+   
+   <script>
+
+    // function setStatus(status) {
+    //     document.getElementById('status').value = status;
+    // }
+</script>
+
 @endsection
