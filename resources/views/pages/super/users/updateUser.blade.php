@@ -39,7 +39,7 @@ Mohammad
                         {{-- <label>Email</label> --}}
                         <input type="email" class="form-control py-2 mb-3" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " name="email" value=" {{$user->email}}" placeholder="Enter User E-mail" required>
                         {{-- <label>Password</label> --}}
-                        <input type="password" class="form-control py-2 mb-3" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " name="password" value="" placeholder="Enter User Password" required>
+                        <input type="password" class="form-control py-2 mb-3" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " name="password" value="{{$user->password}}" placeholder="Enter User Password" required>
                         </div>
                         <div class="input-group" style="gap:10px">
                         {{-- <label>Status</label> --}}
@@ -49,7 +49,7 @@ Mohammad
                             <option value="2">admin</option>
                         </select>
                         {{-- <label>User Image</label><br> --}}
-                        <input type="file"  class="form-control py-2 mb-3" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " name="User_Image" required>
+                        <input type="file"  class="form-control py-2 mb-3" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray; " name="User_Image" >
                         </div>
                         <div class="row" style="justify-content:center">
                         <button type="submit" class="btn btn-primary btn-sm">Update</button>

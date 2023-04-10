@@ -23,6 +23,9 @@
                                 Students ID
                             </th>
                             <th>
+                                Dorm Joined
+                            </th>
+                            <th>
                                 Warning Type
                             </th>
                             <th>
@@ -39,6 +42,13 @@
                             </td>
                             <td>
                                 {{$pun->student_id}}
+                            </td>
+                            <td>
+                                @foreach($stud as $studs)
+                                @if($studs->student_id === $pun->student_id)
+                                    {{$studs->dorm_joined}}
+                                @endif
+                                @endforeach
                             </td>
                             <td>
                                 {{$pun->warning_type}}
@@ -71,25 +81,26 @@
                     <form role="form" method="POST" action="{{route('punishment.edit',['id'=> $pun->id])}}">
                         @method('PUT')
                         @csrf
-                        <div class="input-group">
+                        <div class="input-group" style="gap:10px">
                             
                                 <input  type="text" placeholder="Student Name" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="name" value= {{$pun->name}}  readonly>
                                 <input type="text" placeholder="Student ID" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="student_id"value= {{$pun->student_id}}  readonly>
                             
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Warning Type" class="form-control input-lg" style="height:3.5rem !important; border: 2px solid gray;" name="student_id" value= {{$pun->warning_type}}  readonly>
+                            <input type="text" placeholder="Warning Type" class="form-control input-lg" style="height:3.5rem !important;margin-top:20px; border: 2px solid gray;" name="student_id" value= {{$pun->warning_type}}  readonly>
 
                             
                         </div>
                         <div class="form-group">
                             <div>
-                                <input placeholder="Warning reason ..." class="form-control input-lg" style="height:6rem !important; border: 2px solid gray; " name="warning_reason" value= {{$pun->warning_reason}}  readonly >
+                                <input placeholder="Warning reason ..." class="form-control input-lg" style="height:6rem !important;  border: 2px solid gray; " name="warning_reason" value= {{$pun->warning_reason}}  readonly >
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="status" value="accepted">Approve</button>
-                        <button type="submit" class="btn btn-primary" name="status" value="rejected">Reject</button>
-
+                        <div class="row" style="justify-content: space-evenly">
+                        <button type="submit" class="btn btn-success btn-sm" name="status" value="accepted">Approve</button>
+                        <button type="submit" class="btn btn-danger btn-sm" name="status" value="rejected">Reject</button>
+                        </div>
                         {{-- <input type="hidden" name="status" id="status" value="">
                         <button type="submit" class="btn btn-primary" onclick="setStatus('accepted')">Approve</button>
                         <button type="submit" class="btn btn-primary"  onclick="setStatus('rejected')">Reject</button> --}}

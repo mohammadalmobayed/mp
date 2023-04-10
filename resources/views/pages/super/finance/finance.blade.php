@@ -17,11 +17,20 @@ Mohammad
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title" style="display: inline;">Students info</h2><button  class="fa-solid fa-print" onclick="window.print()"></button>
+                    <div class="row printd" style="justify-content: space-between">
+                    <h2 class="card-title" style="display: inline; margin-left:10px;">Students info</h2>
+                    <form method="GET" action="{{route('search')}}" class="form-inline my-2 my-lg-0">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button type="submit" class="btn btn-primary" style="height:46px">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <button title="print" style="border:none; background:none;" onclick="window.print()"> <i class="fa-solid fa-print fa-xl" style="color: #007bff;"></i></button>
+                    </div>
                     
                     
                     <div class="table-responsive pt-3">
-                        <table class="table table-dark">
+                        <table class="table table-dark" style=" text-align: center;">
                         <thead>
                         <tr>
                             <th>
@@ -67,7 +76,7 @@ Mohammad
                             <th>
                             {{-- <a href="{{route('finance.show', $student->id)}}"  class="fa-solid fa-eye fa-xl" style="color: #4bb6ec;"></i>>show</a> --}}
                             <form action="{{ route('finance.show', $student->id) }}" method="GET">
-                                <button  type="submit"  style="border:none; background:none;" class="btn btn-primary">
+                                <button  type="submit"  style="border:none; background:none;" >
                                     <i class="fa-solid fa-eye fa-xl" style="color: #4bb6ec;"></i></button>
                             </form>
                             
@@ -103,6 +112,9 @@ Mohammad
             display: none;
         }
         td:nth-child(9) {
+            display: none;
+        }
+        .printd{
             display: none;
         }
     }

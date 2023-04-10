@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $user= [
-            [
+            [   'job_id' => 1270,
                 'name'=>'User',
                 'email'=>'user@gmail.com',
                 'phone'=>'0778080925',
@@ -24,23 +24,47 @@ class DatabaseSeeder extends Seeder
                 'role'=> 0
             ],
             [
-                'name'=>'editor',
-                'email'=>'editor@gmail.com',
+                'job_id' => 1271,
+                'name'=>'editorA',
+                'email'=>'editorA@gmail.com',
                 'phone'=>'0778080926',
                 'password'=>bcrypt('123456789'),
-                'role'=> 1
+                'role'=> 1,
+                'sup_role' =>'A'
             ],
             [
+                'job_id' => 1272,
+                'name'=>'editorB',
+                'email'=>'editorB@gmail.com',
+                'phone'=>'0778080927',
+                'password'=>bcrypt('123456789'),
+                'role'=> 1,
+                'sup_role' =>'B'
+
+            ],
+            [
+                'job_id' => 1273,
+                'name'=>'editorH',
+                'email'=>'editorH@gmail.com',
+                'phone'=>'0778080928',
+                'password'=>bcrypt('123456789'),
+                'role'=> 1,
+                'sup_role' =>'Hidab'
+
+            ],
+            [
+                'job_id' => 1274,
                 'name'=>'admin',
                 'email'=>'admin@gmail.com',
-                'phone'=>'0778080927',
+                'phone'=>'0778080929',
                 'password'=>bcrypt('123456789'),
                 'role'=> 2
             ],
             [
+                'job_id' => 1275,
                 'name'=>'superAdmin',
                 'email'=>'superAdmin@gmail.com',
-                'phone'=>'0778080928',
+                'phone'=>'0778080920',
                 'password'=>bcrypt('123456789'),
                 'role'=> 3
             ]

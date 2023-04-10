@@ -15,7 +15,7 @@ mohammad
       
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
+          <div class="row" style="margin: auto auto auto 150px">
             <div  class="moh" class="page-content page-container" id="page-content">
                 <div class="padding">
                     <div class="row container d-flex justify-content-center">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Finance;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+
 
 class FinanceController extends Controller
 {
@@ -13,7 +15,11 @@ class FinanceController extends Controller
      */
     public function index(){
         $students = Student::all(); 
+        $data = ['students',$students];
         return view('pages.super.finance.finance',compact('students'));
+        // return View::make('pages.super.finance.finance', $data)
+        //    ->with('students', $students)
+        //    ->with('content', View::make('pages.user.home', $data));
     }
 
 
@@ -22,7 +28,19 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        //  
+    //     $students = Student::all(); 
+    //  return view('pages.user.home.finance',compact('students'));
+
+
+
+
+    }
+    public function user(){
+        $students = Student::all(); 
+        $data = ['students',$students];
+
+     return view('pages.user.home',compact('students'));
+
     }
 
     /**

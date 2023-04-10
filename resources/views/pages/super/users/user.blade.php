@@ -22,7 +22,7 @@ Mohammad
                             <a href="{{route('user.create')}}"> <button style="margin-right:15px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
                             </div>
                             <div class="table-responsive pt-3">
-                        <table class="table table-dark">
+                        <table class="table table-dark" style=" text-align: center;">
                             <thead>
                                 <tr>
                             {{-- <th>
@@ -77,17 +77,18 @@ Mohammad
                             <td>
                                 {{$user->role}}
                             </td>
-                            <td>
+                            <td style="padding: 0">
 
                                     <form action="{{route('user.destroy',$user->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <div class="p-0  border border-0">
-                                            <button type="submit" class="btn btn-danger show-alert-delete-box">Del</button> 
+                                            <button type="submit" style="border:none; background:none;"><i class="fa-solid fa-trash fa-xl" style="color: #d71414;"> </i> </button>
+                                     
                                         
                                     </form>
                                     
-                                    <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('user.edit',$user->id)}}" ><i class="fa-solid fa-pen fa-xl" style="color: #346BCB;"></i></a>
 
                                 
                                     

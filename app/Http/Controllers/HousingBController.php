@@ -14,7 +14,7 @@ class HousingBController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Punishment $student_id)
+    public function index(Request $request)
     {
         $stud = HousingB::get();
         $puns = Punishment::whereIn('student_id', $stud->pluck('student_id'))->latest()->get()->groupBy('student_id');
@@ -24,6 +24,16 @@ class HousingBController extends Controller
         // $pun_one = Punishment::where('student_id',$student_id)->latest()->first();
 
         $stud_one=[];
+        $searchQuery = $request->input('search');
+    $searchQuery = $request->input('query');
+    if ($searchQuery) {
+        $stud = HousingB::where('name', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('student_id', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('phone', 'like', '%'.$searchQuery.'%')
+                 ->get();
+    } else {
+        $stud = HousingB::all();
+    }
         return view('pages.super.housing.housingB', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
     }
     

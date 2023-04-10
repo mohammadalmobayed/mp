@@ -19,4 +19,8 @@ class Punishment extends Model
         'created_at',
         '_method'
     ];
+    public function notification()
+{
+    return $this->hasOne(Notification::class);
+}
 }

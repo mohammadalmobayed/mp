@@ -78,8 +78,12 @@ Route::get('deanship', [DeanshipController::class, 'index'])->name('deanship.ind
 
 
 /// FinanceRoutes//
+Route::get('home', [FinanceController::class, 'user'])->name('home');
+Route::get('adminHome', [HousingInfoController::class, 'admin'])->name('Home.admin');
+Route::get('editorHome', [HousingInfoController::class, 'editor'])->name('Home.editor');
 Route::get('finance', [FinanceController::class, 'index'])->name('finance.index');
 Route::get('finance/{id}', [FinanceController::class, 'show'])->name('finance.show');
+
 
 
 ///ProfileRoute//
@@ -128,4 +132,13 @@ Route::get('punishment', [PunishmentController::class, 'index'])->name('punishme
 Route::post('punishment',[PunishmentController::class,'store'])->name('punishment.store');
 Route::get('punishment/{id}/single',[PunishmentController::class,'show'])->name('punishment.show');
 Route::put('punishment/{id}/edit',[PunishmentController::class,'edit'])->name('punishment.edit');
+
+Route::get('search',[StudentsController::class, 'index'])->name('search');
+Route::get('searchF',[StudentsController::class, 'searchf'])->name('searchF');
+Route::get('searchA',[HousingAController::class, 'index'])->name('searchA');
+Route::get('searchB',[HousingBController::class, 'index'])->name('searchB');
+Route::get('searchHidab',[HousingHidabController::class, 'index'])->name('searchH');
+
+// Route::get('homee',[FinanceController::class,'create']);
+
 

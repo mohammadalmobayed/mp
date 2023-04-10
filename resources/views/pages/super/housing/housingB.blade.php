@@ -12,6 +12,12 @@
                 <div class="card-body">
                     <div class="row" style="justify-content:space-between">
                     <h2 style=" display: inline" class="card-title">Dorm B</h2>
+                    <form method="GET" action="{{route('searchB')}}" class="form-inline border">
+                        <input class="form-control" style="border:none;" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button type="submit" style="height:46px;border:none; background:none;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                     <a href="{{route('HousingB.create')}}"> <button style="margin-right:15px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
                     </div>
                     <div class="table-responsive pt-3">
@@ -99,24 +105,30 @@
                                 
                                     <a href="{{route('HousingB.edit',$studone->id)}}"><i class="fa-solid fa-pen fa-xl" style="color: #346BCB;"></i></a>
                                 
+                                    @php
+                                    $has_final_warning = false;
+                                    @endphp
+                                    
                                     @if (isset($puns[$studone->student_id]))
-                                    @foreach ($puns[$studone->student_id] as $pun)
-                                        @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
-                                    <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
-                                    @break
-
-                                @else
-                                    <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                        @foreach ($puns[$studone->student_id] as $pun)
+                                            @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
+                                                @php
+                                                $has_final_warning = true;
+                                                @endphp
+                                                @break
+                                            @endif
+                                        @endforeach
                                     @endif
                                     
-                                    @endforeach
-
+                                    @if ($has_final_warning)
+                                        <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
+                                    @else
+                                        <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
+                                    @endif
                                     
-
-                                {{-- @endif 
-                                @if(!isset($puns[$studone->student_id]))
+                                {{-- @if(!isset($puns[$studone->student_id]))
                                 <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
-                                @endif --}}
+                                @endif  --}}
                                 
 
                             </td>

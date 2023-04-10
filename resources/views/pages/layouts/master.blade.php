@@ -7,7 +7,8 @@
       <div class="sidebarContainer">
       <ul class="nav">
         <?php
-          $role=auth()->user()->role
+          $role=auth()->user()->role;
+          $sup_role = auth()->user()->sup_role
         ?>
         <li class="nav-item">
           @if($role == 'superAdmin')
@@ -22,10 +23,12 @@
 
             <i class="fa-solid fa-table menu-icon"></i>
             <span class="menu-title">Dashboard</span>
-            <div class="badge badge-info badge-pill">2</div>
+            {{-- <div class="badge badge-info badge-pill">2</div> --}}
           </a>
         </li>
-        <li class="nav-item">
+        @if($role == 'user' || $role == 'editor')
+
+        <li class="nav-item" style="display:none">
           <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="fa-solid fa-house menu-icon"></i>
             <span class="menu-title">Housing</span>
@@ -40,30 +43,113 @@
             </ul>
           </div>
         </li>
+        @else 
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <i class="fa-solid fa-house menu-icon"></i>
+            <span class="menu-title">Housing</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu" >
+
+              <li class="nav-item"> <a class="nav-link" href="{{route('housingA.index')}}">Housing A</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{route('HousingB.index')}}">Housing B</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{route('Hidab.index')}}">Housing Al-Hidab</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{route('housingInfo.index')}}">Housing Info</a></li>
+            </ul>
+          </div>
+        </li>
+        @endif
+
+        @if($role == 'editor' && $sup_role == 'A' )
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('housingA.index')}}">
+            <i class="fa-solid fa-house menu-icon"></i>
+            <span class="menu-title">Housing A</span>
+          </a>
+        </li>
+        @endif
+        @if($role == 'editor' && $sup_role == 'B' )
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('HousingB.index')}}">
+            <i class="fa-solid fa-house menu-icon"></i>
+            <span class="menu-title">Housing B</span>
+          </a>
+        </li>
+        @endif
+        @if($role == 'editor' && $sup_role == 'Hidab' )
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('Hidab.index')}}">
+            <i class="fa-solid fa-house menu-icon"></i>
+            <span class="menu-title">Housing Al-Hidab</span>
+          </a>
+        </li>
+        @endif
+
+
+        @if($role == 'user' || $role == 'admin' || $role == 'editor')
+        <li class="nav-item" style="display: none">
+          <a class="nav-link" href="{{route('user.index')}}">
+            <i class="fa-solid fa-users menu-icon"></i>
+            <span class="menu-title">Users</span>
+          </a>
+        </li>
+        @else
         <li class="nav-item">
           <a class="nav-link" href="{{route('user.index')}}">
             <i class="fa-solid fa-users menu-icon"></i>
             <span class="menu-title">Users</span>
           </a>
         </li>
+        @endif
+
+        @if($role == 'user' || $role == 'editor')
+        <li class="nav-item" style="display: none">
+          <a class="nav-link" href="{{route('deanship.index')}}">
+            <i class="fa-solid fa-user-tie menu-icon"></i>
+            <span class="menu-title">Deanship</span>
+          </a>
+        </li>
+        @else 
         <li class="nav-item">
           <a class="nav-link" href="{{route('deanship.index')}}">
             <i class="fa-solid fa-user-tie menu-icon"></i>
             <span class="menu-title">Deanship</span>
           </a>
         </li>
+        @endif
+
+        @if($role == 'user' || $role == 'editor')
+        <li class="nav-item" style="display: none">
+          <a class="nav-link" href="{{route('punishment.index')}}">
+            <i class="fa-solid fa-user-tie menu-icon"></i>
+            <span class="menu-title">Punishments</span>
+          </a>
+        </li>
+        @else
         <li class="nav-item">
           <a class="nav-link" href="{{route('punishment.index')}}">
             <i class="fa-solid fa-user-tie menu-icon"></i>
             <span class="menu-title">Punishments</span>
           </a>
         </li>
+        @endif
+        @if($role == 'user' || $role == 'admin' || $role == 'editor')
+        <li class="nav-item" style="display: none">
+          <a class="nav-link" href="{{route('finance.index')}}">
+            <i class="fa-solid fa-dollar-sign menu-icon"></i>
+            <span class="menu-title">Finance</span>
+          </a>
+        </li>
+        @else
         <li class="nav-item">
           <a class="nav-link" href="{{route('finance.index')}}">
             <i class="fa-solid fa-dollar-sign menu-icon"></i>
             <span class="menu-title">Finance</span>
           </a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="{{route('profile.index')}}">
             <i class="fa-solid fa-address-card menu-icon"></i>

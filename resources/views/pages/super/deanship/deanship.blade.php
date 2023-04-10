@@ -21,7 +21,16 @@ Mohammad
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
+                    <div class="row" style="justify-content: space-between; margin: 0 10px">
                     <h2 class="card-title">All Dorm </h2>
+                    <form method="GET" action="{{route('search')}}" class="form-inline my-2 my-lg-0">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button type="submit" class="btn btn-primary" style="height:46px">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    </div>
+                      
 
                     <div class="table-responsive pt-3">
                         <table class="table table-dark">

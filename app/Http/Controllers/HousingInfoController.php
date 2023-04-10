@@ -43,6 +43,24 @@ class HousingInfoController extends Controller
     /**
      * Display the specified resource.
      */
+    public function admin(){
+        $count=DB::table('students')->count();
+        $count1=DB::table('users')->where('role', '=', 1)->count();
+        $stud = HousingInfo::first();
+
+
+        return view('pages.admin.home')->with(['count'=> $count,'count1'=>$count1,'stud'=>$stud]);
+
+    }
+    public function editor(){
+        $count=DB::table('students')->count();
+        $count1=DB::table('users')->where('role', '=', 1)->count();
+        $stud = HousingInfo::first();
+
+
+        return view('pages.editor.home')->with(['count'=> $count,'count1'=>$count1,'stud'=>$stud]);
+
+    }
     public function show(HousingInfo $housingInfo)
     {
          $count=DB::table('students')->count();

@@ -25,17 +25,17 @@ Mohammad
                     <form class="form-group mx-sm-3 mb-2" action="{{ route('info.update',  $stud->id ) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        <div class="input-group" style="gap:10px">
+                        <div class="form-group" style="display:flex">
                         <label>Total Dorms </label>
-                        <input type="text" class="form-control sm-2 mb-3" name="total_dorms" value="{{$stud->total_dorms}}"   placeholder="Enter Total Dorms" required>
+                        <input type="text" class="form-control sm-2 mb-3" name="total_dorms" value="{{$stud->total_dorms}}"   placeholder="Enter Total Dorms" required style="margin: 0 10px">
                         <label>Total Rooms </label>
-                        <input type="text" class="form-control py-2 mb-3" name="total_rooms"  value="{{$stud->total_rooms}}"  placeholder="Enter Total Rooms" required>
+                        <input type="text" class="form-control py-2 mb-3" name="total_rooms"  value="{{$stud->total_rooms}}"  placeholder="Enter Total Rooms" required style="margin: 0 10px">
                         </div>
-                        <div class="input-group" style="gap:10px">
-                        <label >Rooms Occupied</label>
-                        <input type="text" class="form-control py-2 mb-3" name="rooms_occupied"  value="{{$stud->rooms_occupied}}" placeholder="Enter User Phone Number" required>
+                        <div class="form-group" style="display:flex;">
+                        <label >Rooms In Use</label>
+                        <input type="text" class="form-control py-2 mb-3" name="rooms_occupied"  value="{{$stud->rooms_occupied}}" placeholder="Enter User Phone Number" required style="margin: 0 10px">
                         <label >Rooms Vacant</label>
-                        <input type="text" class="form-control py-2 mb-3" name="rooms_vacant"  value="{{$stud->rooms_vacant}}" placeholder="Enter User Phone Number" required>
+                        <input type="text" class="form-control py-2 mb-3" name="rooms_vacant"  value="{{$stud->rooms_vacant}}" placeholder="Enter User Phone Number" required style="margin: 0 10px">
                         </div>
                         <div class="row" style="justify-content:center">
                         <button type="submit" class="btn btn-primary btn-sm">Update</button>

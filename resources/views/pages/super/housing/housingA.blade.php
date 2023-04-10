@@ -11,7 +11,13 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="row" style="justify-content:space-between">
-                    <h2 style=" display: inline" class="card-title">Dorm A</h2>
+                    <h2 style=" display: inline; margin-left:10px" class="card-title">Dorm A</h2>
+                    <form method="GET" action="{{route('searchA')}}" class="form-inline border">
+                        <input class="form-control" style="border:none;" type="search" placeholder="Search" aria-label="Search" name="query">
+                        <button type="submit" style="height:46px;border:none; background:none;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                     <a href="{{route('housingA.create')}}"> <button style="margin-right:15px"  class="btn btn-danger show-alert-delete-box" type="submit" >Add </button></a>
                     </div>
                     <div class="table-responsive pt-3">

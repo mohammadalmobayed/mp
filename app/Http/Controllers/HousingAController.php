@@ -14,7 +14,7 @@ class HousingAController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Punishment $student_id)
+    public function index(Request $request)
     {
         $stud = HousingA::get();
         $puns = Punishment::whereIn('student_id', $stud->pluck('student_id'))->latest()->get()->groupBy('student_id');
@@ -24,6 +24,17 @@ class HousingAController extends Controller
         // $pun_one = Punishment::where('student_id',$student_id)->latest()->first();
 
         $stud_one=[];
+        $searchQuery = $request->input('search');
+    $searchQuery = $request->input('query');
+    if ($searchQuery) {
+        $stud = HousingA::where('name', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('student_id', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('phone', 'like', '%'.$searchQuery.'%')
+                 ->get();
+    } else {
+        $stud = HousingA::all();
+    }
+
         return view('pages.super.housing.housingA', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
     }
     
@@ -113,6 +124,16 @@ class HousingAController extends Controller
         $stud->date_joined = $request->date_joined;
         $stud->phone = $request->phone;
         $stud->save();
+        
+        $stud = Student::findOrFail($id);
+        $stud->student_id = $request->student_id;
+        $stud->name = $request->name;
+        $stud->room_number = $request->room_number;
+        $stud->room_type = $request->room_type;
+        $stud->date_joined = $request->date_joined;
+        $stud->phone = $request->phone;
+        $stud->save();
+
 
         return redirect('housingA');
 
@@ -129,7 +150,7 @@ class HousingAController extends Controller
 {
     $stud = HousingA::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
-    $stud2= Punishment::where('student_id',$student_id)->first();
+    Punishment::where('student_id', $student_id)->delete();
 
 
 
@@ -141,9 +162,12 @@ class HousingAController extends Controller
         $stud1->delete();
     }
 
-    if ($stud2) {
-        $stud2->delete();
-    }
+    // if ($stud2) {
+    //     foreach ($stud2 as $punishment) {
+    //         $punishment->delete();
+    //     }
+    // }
+
 
         return redirect()->back();
     }

@@ -1,11 +1,5 @@
+    @extends('layouts.app1')
     @extends('pages.layouts.master')
-
-    @section('user')
-
-
-    @endsection
-
-
 
 
         @section('content')

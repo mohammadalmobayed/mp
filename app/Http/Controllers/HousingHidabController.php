@@ -13,7 +13,7 @@ class HousingHidabController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $stud = HousingHidab::get();
@@ -21,6 +21,16 @@ class HousingHidabController extends Controller
 
 
         $stud_one=[];
+        $searchQuery = $request->input('search');
+    $searchQuery = $request->input('query');
+    if ($searchQuery) {
+        $stud = HousingHidab::where('name', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('student_id', 'like', '%'.$searchQuery.'%')
+                 ->orWhere('phone', 'like', '%'.$searchQuery.'%')
+                 ->get();
+    } else {
+        $stud = HousingHidab::all();
+    }
         return view('pages.super.housing.hidab', ['stud' => $stud, 'puns' => $puns,'stud_one'=>$stud_one ]);
         // $stud = HousingHidab::get();
         // $puns = Punishment::first();
