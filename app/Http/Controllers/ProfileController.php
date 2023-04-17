@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $data=[];
 
         foreach($profiles as $profile){
-              $data[]= [
+            $data[]= [
 
                 'id'=> $profile->id,
                 'name'=>$profile->name,
@@ -32,7 +32,7 @@ class ProfileController extends Controller
                 'job_title'=>$profile->job_title,
                 'job_id'=>$profile->job_id,
                 'User_image'=>$profile->User_image
-              ];
+            ];
 
         }
         
@@ -46,8 +46,6 @@ class ProfileController extends Controller
     {
         //
     }
-  
-
     /**
      * Store a newly created resource in storage.
      */
@@ -75,7 +73,7 @@ class ProfileController extends Controller
         $user->job_title = $request->job_title;
         $user->User_Image = $user_img;
         $user->password =Hash::make($request->password); 
-         $user->role = $request->role;
+        $user->role = $request->role;
         $user->save();
 
         return redirect('profile');

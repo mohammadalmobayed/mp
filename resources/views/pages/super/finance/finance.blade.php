@@ -25,8 +25,13 @@ Mohammad
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
-                    <button title="print" style="border:none; background:none;" onclick="window.print()"> <i class="fa-solid fa-print fa-xl" style="color: #007bff;"></i></button>
-                    </div>
+                    {{-- <button title="print" style="border:none; background:none;" onclick="window.print()"> <i class="fa-solid fa-print fa-xl" style="color: #007bff;"></i></button> --}}
+                    <button title="Export CSV" style="border:none; background:none;">
+                        <a href="{{ route('export.csv') }}"> 
+                            <i class="fa-solid fa-download fa-xl" style="color: #007bff;"></i>
+                        </a>
+                    </button>    
+                </div>
                     
                     
                     <div class="table-responsive pt-3">

@@ -140,12 +140,22 @@ class HousingHidabController extends Controller
 {
     $stud = HousingHidab::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
-    $stud2= Punishment::where('student_id',$student_id)->first();
+    Punishment::where('student_id', $student_id)->delete();
 
-            $stud->delete();
-            $stud1->delete();
-            $stud2->delete();
-        return back()->with('success','student  deleted successfully' );
+
+
+    if ($stud) {
+        $stud->delete();
+    }
+
+    if ($stud1) {
+        $stud1->delete();
+    }
+
+
+
+
+        return redirect()->back();
     }
 }
 

@@ -139,7 +139,7 @@ class HousingBController extends Controller
 {
     $stud = HousingB::where('student_id', $student_id)->first();
     $stud1 = Student::where('student_id', $student_id)->first();
-    $stud2= Punishment::where('student_id',$student_id)->first();
+    Punishment::where('student_id', $student_id)->delete();
 
 
 
@@ -151,9 +151,8 @@ class HousingBController extends Controller
         $stud1->delete();
     }
 
-    if ($stud2) {
-        $stud2->delete();
-    }
+   
+
 
         return redirect()->back();
     }

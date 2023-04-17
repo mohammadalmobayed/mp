@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DeanshipController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HousingAController;
@@ -142,3 +143,4 @@ Route::get('searchHidab',[HousingHidabController::class, 'index'])->name('search
 // Route::get('homee',[FinanceController::class,'create']);
 
 
+Route::get('/export-csv',[ExportController::class, 'exportCSV'])->name('export.csv');

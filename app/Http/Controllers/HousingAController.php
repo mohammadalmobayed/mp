@@ -162,11 +162,7 @@ class HousingAController extends Controller
         $stud1->delete();
     }
 
-    // if ($stud2) {
-    //     foreach ($stud2 as $punishment) {
-    //         $punishment->delete();
-    //     }
-    // }
+
 
 
         return redirect()->back();
