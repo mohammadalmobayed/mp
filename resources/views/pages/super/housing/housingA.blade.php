@@ -36,7 +36,7 @@
                             <th>
                                 Room No 
                             </th>
-                            <th>
+                            <th >
                                 Room Type 
                             </th>
                             <th>
@@ -87,12 +87,6 @@
                                     @endif
                                 @endforeach
                             @endif
-                                {{-- @if (isset($puns[$studone->student_id]))
-                                {{ $puns[$studone->student_id]->first()->warning_type }}
-                                @endif --}}
-                                {{-- @foreach ($puns->where('student_id', $studone->student_id) as $pun)
-                                    {{ $pun->warning_type }}
-                                @endforeach --}}
                             </td>
                             <td style="padding:0">
                                 <form action="{{route('HousingA.destroy',$studone->student_id)}}" method="post">
@@ -125,24 +119,6 @@
                                     @else
                                         <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
                                     @endif
-                                    
-                                    {{-- @if (isset($puns[$studone->student_id]))
-                                    @foreach ($puns[$studone->student_id] as $pun)
-                                        @if ($pun->warning_type === 'final_warning' && $pun->status === 'accepted')
-                                    <button disabled type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: rgb(166, 165, 165);"></i></button>
-                                    @break
-
-                                @else
-                                    <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
-                                    @endif
-                                    
-                                    @endforeach
-
-                                @endif 
-                                @if(!isset($puns[$studone->student_id]))
-                                <button type="button" style="border:none; background:none;" data-toggle="modal" data-target="#ModalLoginForm{{$studone->id}}"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ece636;"></i></button>
-                                @endif --}}
-                                
 
                             </td>
                         </tr>
@@ -157,9 +133,7 @@
             
     </div>
     <!-- main-panel ends -->
-    {{-- {{dd($stud_one)}} --}}
     @foreach($stud as $studone)
-    {{-- {{dd($stud)}} --}}
     <div id="ModalLoginForm{{$studone->id}}" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -180,12 +154,7 @@
                            
                                 <select class="form-control input-lg" style="height:3.5rem !important; margin-top:20px; border: 2px solid gray;" aria-label="Default select example" name="warning_type" required>
                                     <option selected>Warning type</option>
-                                    {{-- @if($puns && $puns->warning_type == 'first_warning') --}}
-                                    {{-- <option value="first_warning" style="display:none">First Warning</option> --}}
-                                    {{-- @else --}}
                                     <option value="first_warning" >First Warning</option>
-                                    {{-- @endif --}}
-
                                     <option value="final_warning">Final Warning</option>
                                   </select>
                             

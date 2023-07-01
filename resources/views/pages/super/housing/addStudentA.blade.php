@@ -18,7 +18,7 @@ Mohammad
                 <div class="card">
                 <div class="card-body">
                     <div class="row" style="justify-content:center; margin-bottom:20px;">
-                    <h2 class="card-title">Add Sudent</h2> 
+                    <h2 class="card-title">Add Student</h2> 
                     </div>        
                         <form class="form-group mx-sm-3 mb-2" action="{{route('HousingA.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf

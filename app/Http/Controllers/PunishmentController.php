@@ -16,13 +16,12 @@ class PunishmentController extends Controller
      * Display a listing of the resource.
      */
 
-     public function index(Student $student_id){
+    public function index(Student $student_id){
 
-         $puns = Punishment::all();
-         $stud = Student::all();
-        //  dd($puns);
-         return view('pages.super.punishments.punishment', ['puns' => $puns, 'stud' => $stud]);
-     }
+        $puns = Punishment::all();
+        $stud = Student::all();
+        return view('pages.super.punishments.punishment', ['puns' => $puns, 'stud' => $stud]);
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -47,28 +46,17 @@ class PunishmentController extends Controller
         $pun= new Punishment;
         $pun->student_id = $request->student_id;
         $pun->name= $request->name;
-       $pun->warning_type=$request->warning_type;
-       $pun->warning_reason=$request->warning_reason;
-       $pun->status='pending';
-       $pun->supervisor=DB::raw('(SELECT name FROM users WHERE id = ' . auth()->id() . ')');
+        $pun->warning_type=$request->warning_type;
+        $pun->warning_reason=$request->warning_reason;
+        $pun->status='pending';
+        $pun->supervisor=DB::raw('(SELECT name FROM users WHERE id = ' . auth()->id() . ')');
 
-       $pun->save();
-//     $user_id= DB::raw('SELECT * FROM users WHERE role IN ("admin", "superAdmin")');
-    
-
-//        $warning= $pun->warning_type;
-
-//        $notification = new Notification();
-// $notification->message = 'You have a pending punishment: ' . $warning;
-// $notification->user_id = $user_id;  // Or whichever user should receive the notification
-// $notification->status = 'pending';
-// $notification->save();
-// $pun->notification()->save($notification);
+        $pun->save();
 
 
-     return redirect()->back();
-      
-           
+
+    return redirect()->back();
+
     
 
     }
@@ -132,6 +120,5 @@ class PunishmentController extends Controller
      */
     public function destroy(Punishment $punishment)
     {
-      
     }
 }

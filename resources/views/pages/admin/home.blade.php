@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 @extends('pages.layouts.master')
 
 
@@ -20,7 +20,7 @@
             <div class="card" style="width: 300px; margin-right: 20px;">
                 <div class="row no-gutters">
                     <div class="col-sm-5">
-                        <img  src=assets/image/tenant.png alt="tenants">
+                        <img  src=assets/image/tenant.png alt="tenants" id="image_dif">
                     </div>
                     <div class="col-sm-7">
                         <div class="card-body">
